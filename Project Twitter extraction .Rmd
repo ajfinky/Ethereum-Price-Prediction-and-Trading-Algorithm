@@ -10,10 +10,10 @@ library("tidyverse")
 ```
 
 ```{r}
-authentication <- list(consumer_key = "Sms5WMSZXQav8pA9q5KaNBMr9",
-                 consumer_secret =  "TohJi885xWRmlOn1WEQ9pzH5vswPQ1pXHNe3uu7RgZ6w6cWXLY",
-                 access_token = "2611955228-30zIkc1TMggQ67Wyc2Tsticq90rBM6qHaNY40uZ",
-                 access_token_secret = "RJVdFnwdV1zLXLIfLAQa4HETk8KH0x7VomvxYjkJI4JqQ")
+authentication <- list(consumer_key = "add_yours",
+                 consumer_secret =  "add_yours",
+                 access_token = "add_yours",
+                 access_token_secret = "add_yours")
 ```
 
 

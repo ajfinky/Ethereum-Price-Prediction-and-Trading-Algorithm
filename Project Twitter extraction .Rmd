@@ -1,0 +1,120 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library("rtweet")
+library("stringr")
+library("tidyverse")
+```
+
+```{r}
+authentication <- list(consumer_key = "Sms5WMSZXQav8pA9q5KaNBMr9",
+                 consumer_secret =  "TohJi885xWRmlOn1WEQ9pzH5vswPQ1pXHNe3uu7RgZ6w6cWXLY",
+                 access_token = "2611955228-30zIkc1TMggQ67Wyc2Tsticq90rBM6qHaNY40uZ",
+                 access_token_secret = "RJVdFnwdV1zLXLIfLAQa4HETk8KH0x7VomvxYjkJI4JqQ")
+```
+
+
+```{r}
+twitter_token <- create_token(app = "ETH_Twit_App_Final", 
+                              consumer_key = authentication$consumer_key,
+                              consumer_secret = authentication$consumer_secret,
+                              access_token = authentication$access_token,
+                              access_secret = authentication$access_token_secret)
+
+```
+
+```{r}
+tweets_NFT_archive_0 <- search_fullarchive(q = "NFT -giveaway lang:en is:verified -is:retweet", 
+                                              n = 2500,
+                                              env_name = "priceSurge",
+                                              fromDate = 202107010001,
+                                              toDate = 202107231659,
+                                              )
+```
+
+```{r}
+tweets_NFT_archive_1 <- search_fullarchive(q = "NFT -giveaway lang:en is:verified -is:retweet", 
+                                              n = 2500,
+                                              env_name = "priceSurge",
+                                              fromDate = 202107010001,
+                                              toDate = 202107151659,
+                                              )
+```
+
+
+```{r}
+tweets_NFT_archive_2 <- 0
+tweets_NFT_fullArchive <- 0
+```
+
+```{r}
+tweets_NFT_test <- search_tweets(q = "Ethereum lang:en filter:verified", 
+                                 n = 18000,
+                                 include_rts = FALSE,
+                                 retryonratelimit = TRUE
+                                              )
+```
+
+```{r}
+tweets_NFT_test2 <- search_tweets(q = "Ethereum lang:en ", 
+                                 n = 10000,
+                                 include_rts = FALSE,
+                                 retryonratelimit = TRUE
+                                              )
+```
+
+```{r}
+tweets_NFT_test3 <- search_tweets(q = "Ethereum lang:en filter:media", 
+                                 n = 10000,
+                                 include_rts = FALSE,
+                                 retryonratelimit = TRUE
+                                              )
+```
+
+```{r}
+tweets_NFT_test4 <- search_tweets(q = "(Ethereum OR ETH) lang:en filter:verified", 
+                                 n = 10000,
+                                 include_rts = FALSE,
+                                 retryonratelimit = TRUE
+                                              )
+```
+
+```{r}
+tweets_NFT_verified_thirty1 <- search_30day(q = "(Ethereum OR ETH) lang:en is:verified -is:retweet",
+                                              n = 3000,
+                                              env_name = "thirty",
+                                              fromDate = 202111030500,
+                                              toDate = 202112041800,
+                                              )
+```
+
+```{r}
+tweets_NFT_verified_thirty2 <- search_30day(q = "(Ethereum OR ETH) lang:en is:verified -is:retweet",
+                                              n = 6000,
+                                              env_name = "thirty",
+                                              fromDate = 202111030500,
+                                              toDate = 202111261947,
+                                              )
+```
+
+```{r}
+tweets_NFT_verified_thirty3 <- search_30day(q = "(Ethereum OR ETH) lang:en is:verified -is:retweet",
+                                              n = 6000,
+                                              env_name = "thirty",
+                                              fromDate = 202111030500,
+                                              toDate = 202111110001,
+                                              )
+```
+
+# combine data
+```{r}
+tweets_ETH_verified_thirty_combined <- rbind(tweets_NFT_verified_thirty1, tweets_NFT_verified_thirty2, tweets_NFT_verified_thirty3)
+```
+# combine data
+```{r}
+
+```
+

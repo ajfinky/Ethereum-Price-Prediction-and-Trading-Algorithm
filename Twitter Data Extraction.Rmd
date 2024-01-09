@@ -1,0 +1,53 @@
+---
+title: "ETH Twitter Data Extraction"
+output: html_notebook
+---
+
+# Install Packages
+```{r}
+install.packages("rtweet")
+install.packages("stringr")
+```
+
+# Load Packages
+```{r}
+library("rtweet")
+library("stringr")
+library("tidyverse")
+```
+
+# Paste Keys and Tokens
+```{r}
+authentication <- list(consumer_key = "SgB2bBkC6MKsX0MdS6wGk6eJ5",
+                 consumer_secret =  "VW0ZQPtDm3grqWQlv4tojkh9xGqTFA2Wv1FdnZJylDvt1ENtxa",
+                 access_token = "1475261689-ZmL1FF85GsyFoP1wTO3f80HGemkw1JWu4Y0IGVo",
+                 access_token_secret = "ziwmfjhZSQHRSFkHzoHudgcwrdaVhjd6YOOKWYvKyJOXB"
+                 # bearer token: AAAAAAAAAAAAAAAAAAAAACu8VwEAAAAA6%2FdUzB8s1teiYjK9Cab6vRfCJds%3DfvzTbUCZYbODh0yu5u1pS9yGNU9W4AZapJgteMsTeLlELqPsl2
+                 )
+```
+
+# Create Twitter Token
+```{r}
+twitter_token <- create_token(app = "ETH_Twit_App1", #replace the app name with yours
+                              consumer_key = authentication$consumer_key,
+                              consumer_secret = authentication$consumer_secret,
+                              access_token = authentication$access_token,
+                              access_secret = authentication$access_token_secret)
+```
+
+
+```{r}
+tweets_NFT_fullArchive1 <- search_fullarchive(q = "NFT -giveaway lang:en is:verified -is:retweet",
+                        n = 20500,
+                        env_name = "production",
+                        fromDate = 202107011200,
+                        toDate = 202108101200)
+```
+```{r}
+library("data.table")
+```
+
+```{r}
+data_2 <- as.data.frame(tweets_NFT_fullArchive1)
+fwrite(data_2, "nft_tweets_2.csv")
+```
